@@ -1,0 +1,19 @@
+[[source]]
+url = "https://nexus.ojointernal.com/repository/pypi-all/simple"
+verify_ssl = true
+name = "ojo"
+
+[dev-packages]
+pylint = "*"
+autopep8 = "*"
+bumpversion = "*"
+twine = "*"
+
+[packages]
+datadog = "*"
+python-json-logger = "*"
+pyyaml = "*"
+
+
+[requires]
+python_version = "3.6"

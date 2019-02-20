@@ -1,0 +1,19 @@
+# this matches a subset of: https://docs.datadoghq.com/api/?lang=python#create-a-monitor
+name: "kube production: Kubelet on node {{host.name}} is unhealthy"
+type: "service check"
+query: "\"kubernetes.kubelet.check\".over(\"env:production\").by(\"host\").last(3).count_by_status()"
+message: "@slack-operations"
+options:
+  no_data_timeframe: 2
+  notify_audit: True
+  notify_no_data: True
+  renotify_interval: 10
+  thresholds:
+    critical: 2
+    ok: 1
+    warning: 1
+tags:
+  - "my_service:kubernetes"
+  - "k8s_resource_type:pod"
+  - "my_env:production"
+  - "team:operations"
